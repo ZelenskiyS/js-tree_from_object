@@ -15,6 +15,7 @@ const data = {
         }
     }
 };
+const container = document.getElementById('tree');
 
 function createTree(tree, data) {
     container.append(createTreeDom(data));
@@ -24,11 +25,11 @@ function createTreeDom(data) {
     if (!Object.keys(data).length) {
         return
     }
-    let ul = document.createElement('ul');
+    const ul = document.createElement('ul');
     for (let key in data) {
-        let li = document.createElement('li');
+        const li = document.createElement('li');
         li.innerHTML = key;
-        let childrenUl = createTreeDom(data[key]);
+        const childrenUl = createTreeDom(data[key]);
         if (childrenUl) {
             li.append(childrenUl);
         }
@@ -36,5 +37,4 @@ function createTreeDom(data) {
     }
     return ul;
 }
-let container = document.getElementById('tree');
 createTree(container, data);
